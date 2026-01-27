@@ -72,4 +72,595 @@
         }
         
         nav a::after {
-            content: ''
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #c76a58;
+            transition: width 0.3s;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 11rem 2rem 8rem;
+            min-height: 90vh;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            right: -5%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(85, 107, 86, 0.08) 0%, transparent 70%);
+            border-radius: 50% 40% 60% 50%;
+            z-index: 0;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -15%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(199, 106, 88, 0.1) 0%, transparent 70%);
+            border-radius: 60% 50% 40% 50%;
+            z-index: 0;
+        }
+        
+        .hero-content {
+            z-index: 1;
+        }
+        
+        .hero-image {
+            z-index: 1;
+            position: relative;
+        }
+        
+        .hero-image-wrapper {
+            width: 100%;
+            height: 550px;
+            background: linear-gradient(135deg, #e8dcc8 0%, #c9a896 100%);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(85, 107, 86, 0.15);
+        }
+        
+        .hero h1 {
+            font-size: 4.25rem;
+            font-weight: 600;
+            line-height: 1.15;
+            margin-bottom: 1.75rem;
+            color: #3a4540;
+            letter-spacing: -0.01em;
+        }
+        
+        .hero h1 .highlight {
+            color: #556b56;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .hero h1 .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 8px;
+            left: 0;
+            width: 100%;
+            height: 14px;
+            background: rgba(199, 106, 88, 0.25);
+            z-index: -1;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: #5a6b5f;
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+        }
+        
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem;
+            position: relative;
+        }
+        
+        .section-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #c76a58;
+            margin-bottom: 3rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(to right, #c76a58, transparent);
+        }
+        
+        .bio {
+            background: #ffffff;
+            position: relative;
+        }
+        
+        .bio-grid {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 4rem;
+            align-items: start;
+        }
+        
+        .bio-content {
+            font-size: 1.1rem;
+            line-height: 1.85;
+            color: #3d4f43;
+        }
+        
+        .bio-content p {
+            margin-bottom: 1.75rem;
+        }
+        
+        .bio-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #556b56 0%, #4a5f4e 100%);
+            border-radius: 12px;
+            position: sticky;
+            top: 120px;
+            overflow: hidden;
+            box-shadow: 0 12px 40px rgba(85, 107, 86, 0.2);
+        }
+        
+        .capabilities {
+            background: #f7f3ed;
+            position: relative;
+        }
+        
+        .capabilities::before {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: 5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(199, 106, 88, 0.08) 0%, transparent 70%);
+            border-radius: 40% 60% 50% 40%;
+            z-index: 0;
+        }
+        
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .capability-card {
+            background: white;
+            padding: 2.75rem;
+            border-radius: 16px;
+            border-left: 4px solid #556b56;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .capability-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, rgba(199, 106, 88, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(30%, -30%);
+            transition: transform 0.4s;
+        }
+        
+        .capability-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(85, 107, 86, 0.15);
+            border-left-color: #c76a58;
+        }
+        
+        .capability-card:hover::before {
+            transform: translate(20%, -20%) scale(1.5);
+        }
+        
+        .capability-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #556b56 0%, #4a5f4e 100%);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .capability-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: #c76a58;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        
+        .capability-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            color: #3a4540;
+        }
+        
+        .capability-card p {
+            color: #5a6b5f;
+            line-height: 1.75;
+        }
+        
+        .impact {
+            background: #3a4540;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .impact::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(199, 106, 88, 0.1) 0%, transparent 70%);
+            border-radius: 50% 60% 40% 50%;
+        }
+        
+        .impact .section-title {
+            color: #c76a58;
+        }
+        
+        .impact .section-title::after {
+            background: linear-gradient(to right, #c76a58, transparent);
+        }
+        
+        .impact-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            margin-top: 3.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .stat {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+        
+        .stat:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-4px);
+        }
+        
+        .stat-number {
+            font-size: 3.75rem;
+            font-weight: 600;
+            color: #c76a58;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.01em;
+        }
+        
+        .stat-label {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.5;
+            font-weight: 500;
+        }
+        
+        .cta {
+            background: linear-gradient(135deg, #556b56 0%, #3f4f44 100%);
+            color: white;
+            text-align: center;
+            padding: 7rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(199, 106, 88, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta h2 {
+            font-size: 3.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+        }
+        
+        .cta p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 1rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2.5rem;
+        }
+        
+        .btn {
+            padding: 1.2rem 3rem;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: #c76a58;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #b35a48;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(199, 106, 88, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        footer {
+            background: #fdfbf7;
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid #e8dcc8;
+            font-size: 0.9rem;
+            color: #5a6b5f;
+        }
+        
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                padding-top: 8rem;
+            }
+            
+            .hero-image-wrapper {
+                height: 400px;
+            }
+            
+            .bio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .bio-image {
+                position: relative;
+                top: 0;
+            }
+            
+            .capabilities-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .impact-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            nav ul {
+                gap: 1.5rem;
+                font-size: 0.9rem;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            
+            .cta h2 {
+                font-size: 2rem;
+            }
+            
+            .impact-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">VANESSA MAEREFAT</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="experience.html">Experience</a></li>
+                <li><a href="writing.html">Writing</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>I help CEOs turn <span class="highlight">strategic intent</span> into <span class="highlight">operational reality</span>.</h1>
+            <p class="subtitle">Strategic partner. Operational architect. Trusted advisor to executives navigating complexity, transformation, and growth.</p>
+        </div>
+        <div class="hero-image">
+            <div class="hero-image-wrapper"></div>
+        </div>
+    </section>
+
+    <section class="bio section">
+        <div class="section-title">About</div>
+        <div class="bio-grid">
+            <div class="bio-content">
+                <p>I've spent the last decade as a management consultant at Alvarez & Marsal, working alongside C-suite executives at Fortune 500 companies, PE-backed portfolio firms, and mission-driven organizations navigating their most complex challenges.</p>
+                
+                <p>What I do best is translate ambiguity into action. I build the systems, models, and frameworks that turn strategic priorities into executable plans — whether that's consolidating a 1,000-step legal entity rationalization, designing financial dashboards for 300+ principals, or leading digital transformations that save millions in operating costs.</p>
+                
+                <p>I'm drawn to roles where curiosity meets consequence — where understanding the business deeply, building trust across functions, and delivering with precision actually moves the needle. I thrive in environments that value both rigor and adaptability, and I'm energized by leaders who think big and act with urgency.</p>
+                
+                <p>Now, I'm looking for my next chapter: a Chief of Staff role where I can partner directly with a CEO to drive strategy, align stakeholders, and build the infrastructure that enables sustainable growth.</p>
+            </div>
+            <div class="bio-image"></div>
+        </div>
+    </section>
+
+    <section class="capabilities section">
+        <div class="section-title">What I Bring</div>
+        <div class="capabilities-grid">
+            <div class="capability-card">
+                <div class="capability-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M9 11l3 3L22 4"></path>
+                        <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"></path>
+                    </svg>
+                </div>
+                <h3>Strategic Execution</h3>
+                <p>I bridge the gap between vision and reality — translating board-level priorities into cross-functional workstreams, managing executive alignment, and ensuring follow-through on what matters most.</p>
+            </div>
+            
+            <div class="capability-card">
+                <div class="capability-icon">
+                    <svg viewBox="0 0 24 24">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                    </svg>
+                </div>
+                <h3>Operational Design</h3>
+                <p>I design the systems and processes that make companies run better — from financial planning models and capital allocation workflows to post-acquisition integrations and digital transformation roadmaps.</p>
+            </div>
+            
+            <div class="capability-card">
+                <div class="capability-icon">
+                    <svg viewBox="0 0 24 24">
+                        <line x1="12" y1="1" x2="12" y2="23"></line>
+                        <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"></path>
+                    </svg>
+                </div>
+                <h3>Financial Rigor</h3>
+                <p>With a foundation in accounting and FP&A, I bring a finance-forward lens to strategic decision-making — whether modeling long-range scenarios, identifying margin leakage, or designing performance dashboards that drive accountability.</p>
+            </div>
+            
+            <div class="capability-card">
+                <div class="capability-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 00-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 010 7.75"></path>
+                    </svg>
+                </div>
+                <h3>Stakeholder Partnership</h3>
+                <p>I build trust and credibility quickly, whether working with boards, executive teams, or cross-functional leaders. I listen deeply, communicate clearly, and operate with integrity in high-stakes environments.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="impact section">
+        <div class="section-title">Impact at Scale</div>
+        <div class="impact-stats">
+            <div class="stat">
+                <div class="stat-number">$100M+</div>
+                <div class="stat-label">Cost reduction opportunities identified</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">10+</div>
+                <div class="stat-label">Years partnering with C-suite executives</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">300+</div>
+                <div class="stat-label">Leaders trained on strategic frameworks</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">$3M</div>
+                <div class="stat-label">Annual savings from transformation work</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="cta-content">
+            <h2>Let's explore what's possible.</h2>
+            <p>I'm currently seeking Chief of Staff opportunities at enterprise and PE-backed companies.</p>
+            <div class="cta-buttons">
+                <a href="https://linkedin.com/in/vanemaer4" class="btn btn-primary" target="_blank">Connect on LinkedIn</a>
+                <a href="mailto:vanessa.maerefat@gmail.com" class="btn btn-secondary">Email Me</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Vanessa Maerefat. Based in Houston, TX — open to relocate.</p>
+    </footer>
+</body>
+</html>
