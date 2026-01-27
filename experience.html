@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience | Vanessa Maerefat</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            color: #3a4540;
+            background: #fdfbf7;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(253, 251, 247, 0.98);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #e8dcc8;
+            z-index: 100;
+            padding: 1.25rem 0;
+        }
+        
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        nav .logo {
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #3a4540;
+        }
+        
+        nav ul {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #5a6b5f;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #556b56;
+        }
+        
+        .hero-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10rem 2rem 4rem;
+            text-align: center;
+        }
+        
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: #3a4540;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-section p {
+            font-size: 1.2rem;
+            color: #5a6b5f;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .timeline-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+        
+        .section-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #c76a58;
+            margin-bottom: 4rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(to right, #c76a58, transparent);
+        }
+        
+        .timeline-container {
+            position: relative;
+            padding: 3rem 0;
+        }
+        
+        .timeline-path {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(180deg, #c76a58 0%, #556b56 50%, #c76a58 100%);
+            border-radius: 3px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+        
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .timeline-content {
+            width: 45%;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(85, 107, 86, 0.1);
+            border-left: 4px solid #556b56;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            border-left: none;
+            border-right: 4px solid #c76a58;
+        }
+        
+        .timeline-marker {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 24px;
+            background: white;
+            border: 4px solid #556b56;
+            border-radius: 50%;
+            z-index: 10;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-marker {
+            border-color: #c76a58;
+        }
+        
+        .timeline-year {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: -2.5rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #556b56;
+            background: #fdfbf7;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+        
+        .timeline-content h3 {
+            font-size: 1.5rem;
+            color: #3a4540;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-content .role {
+            font-size: 1.1rem;
+            color: #556b56;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .timeline-content .company {
+            font-size: 0.95rem;
+            color: #5a6b5f;
+            margin-bottom: 1rem;
+        }
+        
+        .timeline-content ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+        
+        .timeline-content li {
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            position: relative;
+            color: #5a6b5f;
+            line-height: 1.6;
+        }
+        
+        .timeline-content li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #c76a58;
+            font-weight: 700;
+        }
+        
+        .industries-section {
+            background: white;
+            padding: 5rem 2rem;
+        }
+        
+        .industries-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .industry-card {
+            background: #f7f3ed;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border-left: 3px solid #556b56;
+            transition: all 0.3s;
+        }
+        
+        .industry-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(85, 107, 86, 0.15);
+            border-left-color: #c76a58;
+        }
+        
+        .industry-card h4 {
+            font-size: 1.1rem;
+            color: #3a4540;
+            font-weight: 600;
+        }
+        
+        .skills-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(85, 107, 86, 0.1);
+        }
+        
+        .skill-category h3 {
+            font-size: 1.3rem;
+            color: #556b56;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid #c76a58;
+        }
+        
+        .skill-category ul {
+            list-style: none;
+        }
+        
+        .skill-category li {
+            padding: 0.5rem 0;
+            color: #5a6b5f;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .skill-category li::before {
+            content: '✓';
+            color: #c76a58;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        footer {
+            background: #fdfbf7;
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid #e8dcc8;
+            font-size: 0.9rem;
+            color: #5a6b5f;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            
+            .timeline-path {
+                left: 2rem;
+            }
+            
+            .timeline-item {
+                flex-direction: column !important;
+                padding-left: 4rem;
+            }
+            
+            .timeline-content {
+                width: 100%;
+            }
+            
+            .timeline-marker {
+                left: 2rem;
+            }
+            
+            .timeline-year {
+                left: 2rem;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">VANESSA MAEREFAT</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="experience.html">Experience</a></li>
+                <li><a href="writing.html">Writing</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <h1>A Decade of Driving Impact</h1>
+        <p>From analyzing complex financials at a Fortune 50 tech giant to leading transformative consulting engagements, my career has been defined by turning strategic challenges into measurable outcomes.</p>
+    </section>
+
+    <section class="timeline-section">
+        <div class="section-title">Career Journey</div>
+        <div class="timeline-container">
+            <div class="timeline-path"></div>
+            
+            <!-- Education -->
+            <div class="timeline-item">
+                <div class="timeline-year">2012</div>
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <h3>Texas A&M University</h3>
+                    <div class="role">BBA, Accounting (magna cum laude)</div>
+                    <div class="company">College Station, TX</div>
+                </div>
+            </div>
+
+            <!-- Co-Recitation Instructor -->
+            <div class="timeline-item">
+                <div class="timeline-year">2012</div>
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <h3>Texas A&M Department of Petroleum Engineering</h3>
+                    <div class="role">Co-Recitation Instructor</div>
+                    <div class="company">College Station, TX • Jan - May 2012</div>
+                    <ul>
+                        <li>Prepared lesson plans to facilitate weekly recitation on fossil fuel, renewable, and alternative energy sources with respect to their economic, environmental, and social impacts</li>
+                        <li>Mentored undergraduate students during end-of-semester projects to improve the sustainability of a selected energy source</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- IBM Financial Analyst -->
+            <div class="timeline-item">
+                <div class="timeline-year">2012</div>
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <h3>IBM</h3>
+                    <div class="role">Financial Analyst</div>
+                    <div class="company">Westchester County, NY • 2012 - 2013</div>
+                    <ul>
+                        <li>Developed budget plans and adjusted quarterly forecasts leveraging historical information to ensure P&L accuracy</li>
+                        <li>Trusted business and finance advisor to engineering department with influence and ownership of P&L decisions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- IBM Senior Financial Analyst -->
+            <div class="timeline-item">
+                <div class="timeline-year">2013</div>
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <h3>IBM</h3>
+                    <div class="role">Senior Financial Analyst</div>
+                    <div class="company">Westchester County, NY • 2013 - 2014</div>
+                    <ul>
+                        <li>Sole finance member selected by Watson next-generation computing team for international research engagement</li>
+                        <li>Constructed financial forecast and business plan presentations for Watson research lab VPs</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- A&M Consultant -->
+            <div class="timeline-item">
+                <div class="timeline-year">2015</div>
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <h3>Alvarez & Marsal</h3>
+                    <div class="role">Consultant</div>
+                    <div class="company">Houston, TX • 2015 - 2017</div>
+                    <ul>
+                        <li>Managed personnel data migration for 3,500 employees during post-acquisition payroll integration</li>
+                        <li>Designed internal workflow application to process and report $6M of annualized capital expense requests</li>
+                        <li>Prescribed business process improvements reducing $10M of gross margin leakage</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- A&M Manager -->
+            <div class="timeline-item">
+                <div class="timeline-year">2017</div>
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <h3>Alvarez & Marsal</h3>
+                    <div class="role">Manager</div>
+                    <div class="company">Houston, TX • 2017 - 2022</div>
+                    <ul>
+                        <li>Managed international data modeling team identifying $100M+ of cost reduction opportunities</li>
+                        <li>Led complex legal entity rationalization through 1,000+ step workplan consolidation, reducing tax filing complexity</li>
+                        <li>Led Oracle Hyperion implementation resulting in shift from manual Excel processes to automated environment, reducing monthly close cycle by 5+ days ($3M in operating costs)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- A&M Director -->
+            <div class="timeline-item">
+                <div class="timeline-year">2022</div>
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                    <h3>Alvarez & Marsal</h3>
+                    <div class="role">Director</div>
+                    <div class="company">Houston, TX • 2022 - Present</div>
+                    <ul>
+                        <li>Led design and execution of long-range financial model for private higher ed institution, presenting to Board of Trustees</li>
+                        <li>Constructed sales forecast models transitioned to client FP&A teams, enabling automatic insight into staff resources and labor utilization</li>
+                        <li>Designed financial dashboard and predictive forecast tool for 300+ principals at 8th largest public school district</li>
+                        <li>Led business integration for enterprise-wide SAP implementation (10K users), facilitating application demonstrations and preparing user acceptance testing for finance and accounting module migration from legacy systems</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="industries-section">
+        <div class="industries-container">
+            <div class="section-title">Industries & Sectors</div>
+            <div class="industries-grid">
+                <div class="industry-card">
+                    <h4>Energy & Oilfield Services</h4>
+                </div>
+                <div class="industry-card">
+                    <h4>Education (K-12, Private, Higher Ed)</h4>
+                </div>
+                <div class="industry-card">
+                    <h4>Construction (Electric, Pipeline, Steel Fabrication)</h4>
+                </div>
+                <div class="industry-card">
+                    <h4>Commercial Real Estate</h4>
+                </div>
+                <div class="industry-card">
+                    <h4>Food Distribution</h4>
+                </div>
+                <div class="industry-card">
+                    <h4>Engineering</h4>
+                </div>
+                <div class="industry-card">
+                    <h4>High Tech</h4>
+                </div>
+                <div class="industry-card">
+                    <h4>Professional Services</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="skills-section">
+        <div class="section-title">Skills & Expertise</div>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Technical & Systems</h3>
+                <ul>
+                    <li>Oracle Hyperion, SAP</li>
+                    <li>Excel (Advanced)</li>
+                    <li>JIRA, ServiceNow, Microsoft Project</li>
+                    <li>Teams, SharePoint, Visio</li>
+                </ul>
+            </div>
+            
+            <div class="skill-category">
+                <h3>AI & Automation</h3>
+                <ul>
+                    <li>Claude AI / Prompt Engineering</li>
+                    <li>Workflow Automation</li>
+                    <li>Process Optimization</li>
+                    <li>Digital Transformation</li>
+                </ul>
+            </div>
+            
+            <div class="skill-category">
+                <h3>Core Competencies</h3>
+                <ul>
+                    <li>Financial Modeling & Analysis</li>
+                    <li>Strategic Planning & Execution</li>
+                    <li>Change Management</li>
+                    <li>Cross-Functional Leadership</li>
+                    <li>Process Flow Mapping</li>
+                </ul>
+            </div>
+            
+            <div class="skill-category">
+                <h3>Languages</h3>
+                <ul>
+                    <li>Spanish (Proficient)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Vanessa Maerefat. Based in Houston, TX — open to relocate.</p>
+    </footer>
+</body>
+</html>
