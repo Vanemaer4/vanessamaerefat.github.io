@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Vanessa Maerefat</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            color: #3a4540;
+            background: #fdfbf7;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(253, 251, 247, 0.98);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #e8dcc8;
+            z-index: 100;
+            padding: 1.25rem 0;
+        }
+        
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        nav .logo {
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #3a4540;
+        }
+        
+        nav ul {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #5a6b5f;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #556b56;
+        }
+        
+        .hero-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10rem 2rem 4rem;
+            text-align: center;
+        }
+        
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: #3a4540;
+            margin-bottom: 1rem;
+        }
+        
+        .split-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+        
+        .about-content h2 {
+            font-size: 2rem;
+            color: #556b56;
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-content p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #5a6b5f;
+            margin-bottom: 2rem;
+        }
+        
+        .fun-facts {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(85, 107, 86, 0.1);
+            border-left: 4px solid #c76a58;
+        }
+        
+        .fun-facts h3 {
+            font-size: 1.5rem;
+            color: #556b56;
+            margin-bottom: 1.5rem;
+        }
+        
+        .fun-facts ul {
+            list-style: none;
+        }
+        
+        .fun-facts li {
+            padding: 0.75rem 0;
+            color: #5a6b5f;
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            border-bottom: 1px solid #f7f3ed;
+        }
+        
+        .fun-facts li:last-child {
+            border-bottom: none;
+        }
+        
+        .fun-facts li::before {
+            content: '✦';
+            color: #c76a58;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .photo-collage {
+            position: relative;
+            height: 600px;
+            width: 100%;
+        }
+        
+        .polaroid {
+            position: absolute;
+            background: white;
+            padding: 12px;
+            padding-bottom: 45px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .polaroid:hover {
+            transform: scale(1.05) !important;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            z-index: 100 !important;
+        }
+        
+        .polaroid img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        /* Individual polaroid positions and rotations */
+        .polaroid:nth-child(1) {
+            top: 20px;
+            left: 10%;
+            transform: rotate(-8deg);
+            z-index: 5;
+        }
+        
+        .polaroid:nth-child(2) {
+            top: 50px;
+            left: 35%;
+            transform: rotate(5deg);
+            z-index: 3;
+        }
+        
+        .polaroid:nth-child(3) {
+            top: 10px;
+            right: 15%;
+            transform: rotate(-12deg);
+            z-index: 4;
+        }
+        
+        .polaroid:nth-child(4) {
+            top: 250px;
+            left: 5%;
+            transform: rotate(10deg);
+            z-index: 2;
+        }
+        
+        .polaroid:nth-child(5) {
+            top: 280px;
+            left: 32%;
+            transform: rotate(-5deg);
+            z-index: 6;
+        }
+        
+        .polaroid:nth-child(6) {
+            top: 230px;
+            right: 20%;
+            transform: rotate(8deg);
+            z-index: 1;
+        }
+        
+        .polaroid:nth-child(7) {
+            top: 140px;
+            left: 48%;
+            transform: rotate(-3deg);
+            z-index: 7;
+        }
+        
+        .books-section {
+            background: white;
+            padding: 5rem 2rem;
+        }
+        
+        .books-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            color: #556b56;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        
+        .books-category {
+            margin-bottom: 4rem;
+        }
+        
+        .books-category h3 {
+            font-size: 1.3rem;
+            color: #c76a58;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 2rem;
+        }
+        
+        .book-item {
+            text-align: center;
+        }
+        
+        .book-cover {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(135deg, #9d7a6f 0%, #7d5e56 100%);
+            border-radius: 3px 6px 6px 3px;
+            margin-bottom: 1rem;
+            box-shadow: 
+                -3px 0 5px rgba(0,0,0,0.2),
+                3px 3px 12px rgba(0,0,0,0.25),
+                inset -8px 0 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            text-align: center;
+            color: white;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            line-height: 1.3;
+            position: relative;
+            transform: perspective(800px) rotateY(-8deg);
+            transition: all 0.3s ease;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        /* Spine effect */
+        .book-cover::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 18px;
+            background: linear-gradient(to right, 
+                rgba(0, 0, 0, 0.4) 0%, 
+                rgba(0, 0, 0, 0.2) 40%,
+                rgba(255, 255, 255, 0.1) 60%,
+                rgba(0, 0, 0, 0.1) 100%);
+            border-right: 1px solid rgba(0,0,0,0.2);
+        }
+        
+        /* Page edges */
+        .book-cover::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            background: repeating-linear-gradient(
+                to bottom,
+                #f5f0e8 0px,
+                #e8e3d8 1px,
+                #f5f0e8 2px
+            );
+            box-shadow: inset 2px 0 3px rgba(0,0,0,0.2);
+        }
+        
+        .book-item:hover .book-cover {
+            transform: perspective(800px) rotateY(-2deg) translateY(-5px);
+        }
+        
+        .book-item h4 {
+            font-size: 0.95rem;
+            color: #3a4540;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+        }
+        
+        .book-item p {
+            font-size: 0.85rem;
+            color: #5a6b5f;
+        }
+        
+        .travel-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+        
+        .travel-map {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(85, 107, 86, 0.1);
+            margin: 2rem 0;
+        }
+        
+        #world-map {
+            width: 100%;
+            height: 500px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .map-legend {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .legend-color {
+            width: 30px;
+            height: 20px;
+            border-radius: 4px;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .legend-color.visited {
+            background: #c76a58;
+        }
+        
+        .legend-color.bucket {
+            background: #556b56;
+        }
+        
+        .legend-item span {
+            font-size: 0.95rem;
+            color: #5a6b5f;
+            font-weight: 500;
+        }
+        
+        .travel-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        
+        .travel-list {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(85, 107, 86, 0.1);
+        }
+        
+        .travel-list h3 {
+            font-size: 1.5rem;
+            color: #556b56;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid #c76a58;
+        }
+        
+        .country-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+        
+        .country-tag {
+            background: #f7f3ed;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #5a6b5f;
+            border: 1px solid #e8dcc8;
+        }
+        
+        .bucket-list .country-tag {
+            background: rgba(199, 106, 88, 0.1);
+            border-color: #c76a58;
+            color: #c76a58;
+        }
+        
+        footer {
+            background: #fdfbf7;
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid #e8dcc8;
+            font-size: 0.9rem;
+            color: #5a6b5f;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            
+            .split-section {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .photo-collage {
+                grid-template-columns: 1fr;
+            }
+            
+            .travel-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .books-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">VANESSA MAEREFAT</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="experience.html">Experience</a></li>
+                <li><a href="writing.html">Writing</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <h1>Beyond the Resume</h1>
+    </section>
+
+    <section class="split-section">
+        <div class="about-content">
+            <h2>Who I Am</h2>
+            <p>I was born and raised in Sugar Land, Texas, and am the proud daughter of immigrant parents who came to the United States to pursue PhDs in chemical engineering — half Venezuelan, half Iranian. When I was little and people would ask what I wanted to be when I grew up, I would rattle off five different careers, convinced I could be multiple things at once or reinvent myself over and over. I didn't know what I wanted to study in college, but I chose accounting because working for myself one day sounded appealing, and a solid understanding of financials felt essential. I've stayed in consulting for so long because it has offered me variety, but I'm ready to own decisions, shape a company whose mission I truly believe in, and one day lead a P&L. This is why I'm pursuing Chief of Staff roles — to learn directly from visionary leaders, drive execution at the highest level, and build the strategic muscle that comes from being in the room where decisions happen. I love challenges, embrace ambiguity, and consider myself a lifelong learner who thrives on solving tough problems. I'm drawn to research, writing, collaboration, and work that feels purposeful.</p>
+            
+            <div class="fun-facts">
+                <h3>Fun Facts</h3>
+                <ul>
+                    <li>You'll find me on the sand volleyball court most weekends</li>
+                    <li>Formula 1 superfan — I never miss a race</li>
+                    <li>Party trick: spot-on impressions of Lilo from Lilo & Stitch and Blue from Blue's Clues</li>
+                    <li>Spent a decade as a vegetarian (no longer, but it taught me discipline and creativity in the kitchen)</li>
+                    <li>In an alternate universe, I'm either on Broadway or touring with a band</li>
+                    <li>My kitchen is a laboratory for recipes from around the world — currently perfecting homemade pasta</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="photo-collage">
+            <div class="polaroid">
+                <img src="about-photo-1.jpg" alt="Vanessa">
+            </div>
+            <div class="polaroid">
+                <img src="about-photo-2.jpg" alt="Vanessa">
+            </div>
+            <div class="polaroid">
+                <img src="about-photo-3.jpg" alt="Vanessa">
+            </div>
+            <div class="polaroid">
+                <img src="about-photo-4.jpg" alt="Vanessa">
+            </div>
+            <div class="polaroid">
+                <img src="about-photo-5.jpg" alt="Vanessa">
+            </div>
+            <div class="polaroid">
+                <img src="about-photo-6.jpg" alt="Vanessa">
+            </div>
+            <div class="polaroid">
+                <img src="about-photo-7.jpg" alt="Vanessa">
+            </div>
+        </div>
+    </section>
+
+    <section class="books-section">
+        <div class="books-container">
+            <h2 class="section-title">What I'm Reading</h2>
+            
+            <div class="books-category">
+                <h3>Currently Reading</h3>
+                <div class="books-grid">
+                    <div class="book-item">
+                        <div class="book-cover">I Know This Much Is True</div>
+                        <h4>I Know This Much Is True</h4>
+                        <p>Wally Lamb</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="books-category">
+                <h3>Just Finished</h3>
+                <div class="books-grid">
+                    <div class="book-item">
+                        <div class="book-cover">A Court of Thorns and Roses</div>
+                        <h4>A Court of Thorns and Roses (Series)</h4>
+                        <p>Sarah J. Maas</p>
+                    </div>
+                    <div class="book-item">
+                        <div class="book-cover">Range</div>
+                        <h4>Range</h4>
+                        <p>David Epstein</p>
+                    </div>
+                    <div class="book-item">
+                        <div class="book-cover">The Courage to Be Disliked</div>
+                        <h4>The Courage to Be Disliked</h4>
+                        <p>Ichiro Kishimi</p>
+                    </div>
+                    <div class="book-item">
+                        <div class="book-cover">I'm Glad My Mom Died</div>
+                        <h4>I'm Glad My Mom Died</h4>
+                        <p>Jennette McCurdy</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="books-category">
+                <h3>Up Next</h3>
+                <div class="books-grid">
+                    <div class="book-item">
+                        <div class="book-cover">The Blue Sisters</div>
+                        <h4>The Blue Sisters</h4>
+                        <p>Coco Mellors</p>
+                    </div>
+                    <div class="book-item">
+                        <div class="book-cover">Start With Why</div>
+                        <h4>Start With Why</h4>
+                        <p>Simon Sinek</p>
+                    </div>
+                    <div class="book-item">
+                        <div class="book-cover">Runnin' Down a Dream</div>
+                        <h4>Runnin' Down a Dream</h4>
+                        <p>Tom Petty</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="travel-section">
+        <h2 class="section-title">Where I've Been & Where I'm Going</h2>
+        
+        <div class="travel-map">
+            <div id="world-map"></div>
+            
+            <div class="map-legend">
+                <div class="legend-item">
+                    <div class="legend-color visited"></div>
+                    <span>Countries I've Explored</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color bucket"></div>
+                    <span>Bucket List Destinations</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Initialize the map
+        const map = L.map('world-map', {
+            center: [30, 0],
+            zoom: 2,
+            minZoom: 2,
+            maxZoom: 5,
+            zoomControl: true,
+            dragging: true,
+            scrollWheelZoom: false
+        });
+
+        // Add a simple tile layer (CartoDB Light - clean and minimal)
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '',
+            subdomains: 'abcd',
+            maxZoom: 5
+        }).addTo(map);
+
+        // Countries you've visited with approximate center coordinates
+        const visitedCountries = [
+            {name: 'Canada', coords: [56.1304, -106.3468]},
+            {name: 'Mexico', coords: [23.6345, -102.5528]},
+            {name: 'Venezuela', coords: [6.4238, -66.5897]},
+            {name: 'Costa Rica', coords: [9.7489, -83.7534]},
+            {name: 'Guatemala', coords: [15.7835, -90.2308]},
+            {name: 'Belize', coords: [17.1899, -88.4976]},
+            {name: 'England', coords: [52.3555, -1.1743]},
+            {name: 'Iceland', coords: [64.9631, -19.0208]},
+            {name: 'Spain', coords: [40.4637, -3.7492]},
+            {name: 'Italy', coords: [41.8719, 12.5674]},
+            {name: 'France', coords: [46.2276, 2.2137]},
+            {name: 'Croatia', coords: [45.1, 15.2]},
+            {name: 'Slovenia', coords: [46.1512, 14.9955]},
+            {name: 'Czech Republic', coords: [49.8175, 15.473]},
+            {name: 'Germany', coords: [51.1657, 10.4515]},
+            {name: 'Austria', coords: [47.5162, 14.5501]},
+            {name: 'Hungary', coords: [47.1625, 19.5033]},
+            {name: 'Poland', coords: [51.9194, 19.1451]}
+        ];
+
+        // Bucket list countries
+        const bucketList = [
+            {name: 'Portugal', coords: [39.3999, -8.2245]},
+            {name: 'Australia', coords: [-25.2744, 133.7751]},
+            {name: 'Japan', coords: [36.2048, 138.2529]},
+            {name: 'Switzerland', coords: [46.8182, 8.2275]}
+        ];
+
+        // Add markers for visited countries
+        visitedCountries.forEach(country => {
+            L.circleMarker(country.coords, {
+                radius: 8,
+                fillColor: '#c76a58',
+                color: '#fff',
+                weight: 2,
+                opacity: 1,
+                fillOpacity: 0.8
+            }).addTo(map).bindPopup(`<strong>${country.name}</strong><br>Visited`);
+        });
+
+        // Add markers for bucket list countries
+        bucketList.forEach(country => {
+            L.circleMarker(country.coords, {
+                radius: 8,
+                fillColor: '#556b56',
+                color: '#fff',
+                weight: 2,
+                opacity: 1,
+                fillOpacity: 0.8
+            }).addTo(map).bindPopup(`<strong>${country.name}</strong><br>Bucket List`);
+        });
+    </script>
+
+    <footer>
+        <p>&copy; 2025 Vanessa Maerefat. Based in Houston, TX — open to relocate.</p>
+    </footer>
+</body>
+</html>
