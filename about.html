@@ -116,6 +116,14 @@
             margin-top: 2rem;
         }
         
+        .fun-facts h3 {
+            font-size: 1.3rem;
+            color: #556b56;
+            margin-bottom: 0.5rem;
+            text-align: left;
+            grid-column: 1 / -1;
+        }
+        
         .fun-fact-card {
             perspective: 1000px;
             height: 140px;
@@ -163,13 +171,6 @@
             font-weight: 500;
         }
         
-        .fun-facts h3 {
-            font-size: 1.3rem;
-            color: #556b56;
-            margin-bottom: 0.5rem;
-            text-align: left;
-        }
-        
         .photo-collage {
             position: relative;
             height: 600px;
@@ -199,7 +200,6 @@
             display: block;
         }
         
-        /* Individual polaroid positions and rotations */
         .polaroid:nth-child(1) {
             top: 20px;
             left: 10%;
@@ -315,7 +315,6 @@
             text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
         }
         
-        /* Spine effect */
         .book-cover::before {
             content: '';
             position: absolute;
@@ -331,7 +330,6 @@
             border-right: 1px solid rgba(0,0,0,0.2);
         }
         
-        /* Page edges */
         .book-cover::after {
             content: '';
             position: absolute;
@@ -350,6 +348,14 @@
         
         .book-item:hover .book-cover {
             transform: perspective(800px) rotateY(-2deg) translateY(-5px);
+        }
+        
+        .book-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: relative;
+            z-index: 1;
         }
         
         .book-item h4 {
@@ -420,49 +426,6 @@
             font-weight: 500;
         }
         
-        .travel-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-top: 2rem;
-        }
-        
-        .travel-list {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(85, 107, 86, 0.1);
-        }
-        
-        .travel-list h3 {
-            font-size: 1.5rem;
-            color: #556b56;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.75rem;
-            border-bottom: 2px solid #c76a58;
-        }
-        
-        .country-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-        }
-        
-        .country-tag {
-            background: #f7f3ed;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            color: #5a6b5f;
-            border: 1px solid #e8dcc8;
-        }
-        
-        .bucket-list .country-tag {
-            background: rgba(199, 106, 88, 0.1);
-            border-color: #c76a58;
-            color: #c76a58;
-        }
-        
         footer {
             background: #fdfbf7;
             text-align: center;
@@ -483,11 +446,16 @@
             }
             
             .photo-collage {
-                grid-template-columns: 1fr;
+                height: 400px;
             }
             
-            .travel-grid {
-                grid-template-columns: 1fr;
+            .polaroid img {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .fun-facts {
+                grid-template-columns: repeat(3, 1fr);
             }
             
             .books-grid {
@@ -520,14 +488,42 @@
             
             <div class="fun-facts">
                 <h3>Fun Facts</h3>
-                <ul>
-                    <li>You'll find me on the sand volleyball court most weekends</li>
-                    <li>Formula 1 superfan — I never miss a race</li>
-                    <li>Party trick: spot-on impressions of Lilo from Lilo & Stitch and Blue from Blue's Clues</li>
-                    <li>Spent a decade as a vegetarian (no longer, but it taught me discipline and creativity in the kitchen)</li>
-                    <li>In an alternate universe, I'm either on Broadway or touring with a band</li>
-                    <li>My kitchen is a laboratory for recipes from around the world — currently perfecting homemade pasta</li>
-                </ul>
+                <div class="fun-fact-card">
+                    <div class="card-inner">
+                        <div class="card-front">🏐</div>
+                        <div class="card-back">You'll find me on the sand volleyball court most weekends</div>
+                    </div>
+                </div>
+                <div class="fun-fact-card">
+                    <div class="card-inner">
+                        <div class="card-front">🏎️</div>
+                        <div class="card-back">Formula 1 superfan — I never miss a race</div>
+                    </div>
+                </div>
+                <div class="fun-fact-card">
+                    <div class="card-inner">
+                        <div class="card-front">🎭</div>
+                        <div class="card-back">Party trick: spot-on impressions of Lilo and Blue from Blue's Clues</div>
+                    </div>
+                </div>
+                <div class="fun-fact-card">
+                    <div class="card-inner">
+                        <div class="card-front">🥗</div>
+                        <div class="card-back">Spent a decade as a vegetarian (taught me discipline and creativity)</div>
+                    </div>
+                </div>
+                <div class="fun-fact-card">
+                    <div class="card-inner">
+                        <div class="card-front">🎵</div>
+                        <div class="card-back">In an alternate universe, I'm either on Broadway or touring with a band</div>
+                    </div>
+                </div>
+                <div class="fun-fact-card">
+                    <div class="card-inner">
+                        <div class="card-front">🍳</div>
+                        <div class="card-back">My kitchen is a laboratory for recipes from around the world</div>
+                    </div>
+                </div>
             </div>
         </div>
         
@@ -655,8 +651,11 @@
         </div>
     </section>
 
+    <footer>
+        <p>&copy; 2025 Vanessa Maerefat. Based in Houston, TX — open to relocate.</p>
+    </footer>
+
     <script>
-        // Initialize the map
         const map = L.map('world-map', {
             center: [30, 0],
             zoom: 2,
@@ -667,14 +666,12 @@
             scrollWheelZoom: false
         });
 
-        // Add a simple tile layer (CartoDB Light - clean and minimal)
         L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
             attribution: '',
             subdomains: 'abcd',
             maxZoom: 5
         }).addTo(map);
 
-        // Countries you've visited with approximate center coordinates
         const visitedCountries = [
             {name: 'Canada', coords: [56.1304, -106.3468]},
             {name: 'Mexico', coords: [23.6345, -102.5528]},
@@ -696,7 +693,6 @@
             {name: 'Poland', coords: [51.9194, 19.1451]}
         ];
 
-        // Bucket list countries
         const bucketList = [
             {name: 'Portugal', coords: [39.3999, -8.2245]},
             {name: 'Australia', coords: [-25.2744, 133.7751]},
@@ -704,7 +700,6 @@
             {name: 'Switzerland', coords: [46.8182, 8.2275]}
         ];
 
-        // Add markers for visited countries
         visitedCountries.forEach(country => {
             L.circleMarker(country.coords, {
                 radius: 8,
@@ -716,7 +711,6 @@
             }).addTo(map).bindPopup(`<strong>${country.name}</strong><br>Visited`);
         });
 
-        // Add markers for bucket list countries
         bucketList.forEach(country => {
             L.circleMarker(country.coords, {
                 radius: 8,
@@ -728,9 +722,5 @@
             }).addTo(map).bindPopup(`<strong>${country.name}</strong><br>Bucket List`);
         });
     </script>
-
-    <footer>
-        <p>&copy; 2025 Vanessa Maerefat. Based in Houston, TX — open to relocate.</p>
-    </footer>
 </body>
 </html>
