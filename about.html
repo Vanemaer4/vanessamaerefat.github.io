@@ -110,41 +110,64 @@
         }
         
         .fun-facts {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 0.75rem;
+            margin-top: 2rem;
+        }
+        
+        .fun-fact-card {
+            perspective: 1000px;
+            height: 140px;
+        }
+        
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        
+        .fun-fact-card:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem;
+            box-shadow: 0 4px 15px rgba(85, 107, 86, 0.1);
+        }
+        
+        .card-front {
+            background: linear-gradient(135deg, #c76a58 0%, #b35a48 100%);
+            color: white;
+            font-size: 2.5rem;
+        }
+        
+        .card-back {
             background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(85, 107, 86, 0.1);
-            border-left: 4px solid #c76a58;
+            color: #3a4540;
+            transform: rotateY(180deg);
+            border: 2px solid #c76a58;
+            font-size: 0.75rem;
+            line-height: 1.4;
+            font-weight: 500;
         }
         
         .fun-facts h3 {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: #556b56;
-            margin-bottom: 1.5rem;
-        }
-        
-        .fun-facts ul {
-            list-style: none;
-        }
-        
-        .fun-facts li {
-            padding: 0.75rem 0;
-            color: #5a6b5f;
-            display: flex;
-            align-items: start;
-            gap: 1rem;
-            border-bottom: 1px solid #f7f3ed;
-        }
-        
-        .fun-facts li:last-child {
-            border-bottom: none;
-        }
-        
-        .fun-facts li::before {
-            content: '✦';
-            color: #c76a58;
-            font-size: 1.2rem;
-            flex-shrink: 0;
+            margin-bottom: 0.5rem;
+            text-align: left;
         }
         
         .photo-collage {
