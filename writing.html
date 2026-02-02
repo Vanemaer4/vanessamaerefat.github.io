@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writing | Vanessa Maerefat</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.7;
+            color: #3a4540;
+            background: #fdfbf7;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(253, 251, 247, 0.98);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #e8dcc8;
+            z-index: 100;
+            padding: 1.25rem 0;
+        }
+        
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        nav .logo {
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #3a4540;
+        }
+        
+        nav ul {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #5a6b5f;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #556b56;
+        }
+        
+        .hero-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10rem 2rem 4rem;
+            text-align: center;
+        }
+        
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: #3a4540;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-section p {
+            font-size: 1.15rem;
+            color: #5a6b5f;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .writings-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 2rem 5rem;
+        }
+        
+        .writing-card {
+            margin-bottom: 4rem;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(85, 107, 86, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .writing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(85, 107, 86, 0.12);
+        }
+        
+        .writing-card:nth-child(odd) {
+            background: white;
+        }
+        
+        .writing-card:nth-child(even) {
+            background: #fdfbf7;
+        }
+        
+        .writing-category {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #c76a58;
+            margin-bottom: 1rem;
+            padding: 0.35rem 1rem;
+            background: rgba(199, 106, 88, 0.1);
+            border-radius: 20px;
+        }
+        
+        .writing-card h2 {
+            font-size: 2.2rem;
+            color: #556b56;
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+        
+        .writing-subtitle {
+            font-size: 1.05rem;
+            color: #5a6b5f;
+            font-style: italic;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e8dcc8;
+        }
+        
+        .writing-content {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: #3a4540;
+        }
+        
+        .writing-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .writing-content p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .poem-content {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            line-height: 2;
+            text-align: center;
+            color: #3a4540;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .poem-stanza {
+            margin-bottom: 2.5rem;
+        }
+        
+        .poem-line {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pull-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #556b56;
+            margin: 2.5rem 0;
+            padding: 2rem;
+            border-left: 4px solid #c76a58;
+            background: rgba(199, 106, 88, 0.05);
+            line-height: 1.6;
+        }
+        
+        footer {
+            background: #fdfbf7;
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid #e8dcc8;
+            font-size: 0.9rem;
+            color: #5a6b5f;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            
+            .writing-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .writing-card h2 {
+                font-size: 1.8rem;
+            }
+            
+            .pull-quote {
+                font-size: 1.2rem;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">VANESSA MAEREFAT</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="experience.html">Experience</a></li>
+                <li><a href="writing.html">Writing</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <h1>Selected Writing</h1>
+        <p>Perspectives on leadership, problem-solving, and the spaces in between.</p>
+    </section>
+
+    <div class="writings-container">
+        
+        <!-- Writing Piece 1: Creative/Poem -->
+        <article class="writing-card">
+            <span class="writing-category">Creative</span>
+            <h2>[Your Poem Title]</h2>
+            <p class="writing-subtitle">A reflection on [theme]</p>
+            
+            <div class="poem-content">
+                <div class="poem-stanza">
+                    <span class="poem-line">[First line of your poem]</span>
+                    <span class="poem-line">[Second line]</span>
+                    <span class="poem-line">[Third line]</span>
+                    <span class="poem-line">[Fourth line]</span>
+                </div>
+                
+                <div class="poem-stanza">
+                    <span class="poem-line">[Next stanza first line]</span>
+                    <span class="poem-line">[Second line]</span>
+                    <span class="poem-line">[Third line]</span>
+                    <span class="poem-line">[Fourth line]</span>
+                </div>
+                
+                <!-- Add more stanzas as needed -->
+            </div>
+        </article>
+
+        <!-- Writing Piece 2: Strategic Problem-Solving -->
+        <article class="writing-card">
+            <span class="writing-category">Leadership</span>
+            <h2>[Title: The Challenge You Faced]</h2>
+            <p class="writing-subtitle">Navigating complexity under constraint</p>
+            
+            <div class="writing-content">
+                <p>[Opening paragraph - set the scene. What was the problem? Why did it matter? What were the stakes?]</p>
+                
+                <p>[Second paragraph - describe the constraints and complexity. Incomplete information? Competing priorities? Time pressure?]</p>
+                
+                <div class="pull-quote">
+                    "[A key insight or turning point from your story - something memorable and quotable]"
+                </div>
+                
+                <p>[Third paragraph - how did you approach it? What was your thinking process? How did you structure the ambiguity?]</p>
+                
+                <p>[Fourth paragraph - the outcome and what you learned about judgment, decision-making, or leadership]</p>
+            </div>
+        </article>
+
+        <!-- Writing Piece 3: Bridging Two Worlds -->
+        <article class="writing-card">
+            <span class="writing-category">Reflection</span>
+            <h2>[Title: The Bridge You Built]</h2>
+            <p class="writing-subtitle">Translating between strategy and execution</p>
+            
+            <div class="writing-content">
+                <p>[Opening - introduce the two "worlds" that needed bridging. Who were the stakeholders? What was at stake?]</p>
+                
+                <p>[The challenge - why was this difficult? What made these worlds feel incompatible or in tension?]</p>
+                
+                <p>[Your approach - how did you create understanding on both sides? What did you learn about translation, empathy, or communication?]</p>
+                
+                <div class="pull-quote">
+                    "[Another memorable insight or lesson from this experience]"
+                </div>
+                
+                <p>[The resolution and reflection - what happened? What did this teach you about being a connector? How does this inform how you approach similar situations now?]</p>
+            </div>
+        </article>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Vanessa Maerefat. Based in Houston, TX — open to relocate.</p>
+    </footer>
+</body>
+</html>
