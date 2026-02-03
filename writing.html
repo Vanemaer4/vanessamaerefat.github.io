@@ -161,23 +161,75 @@
             margin-bottom: 0;
         }
         
+        /* Poem Carousel Styles */
+        .poem-carousel {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2rem 4rem;
+        }
+        
         .poem-content {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.2rem;
             line-height: 2;
             text-align: center;
             color: #3a4540;
-            max-width: 600px;
-            margin: 0 auto;
+            min-height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .poem-stanza {
-            margin-bottom: 2.5rem;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        
+        .poem-stanza.active {
+            display: block;
+            opacity: 1;
         }
         
         .poem-line {
             display: block;
             margin-bottom: 0.5rem;
+        }
+        
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(85, 107, 86, 0.1);
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+            color: #556b56;
+            font-size: 1.2rem;
+        }
+        
+        .carousel-arrow:hover {
+            background: rgba(85, 107, 86, 0.2);
+        }
+        
+        .carousel-arrow.prev {
+            left: 0;
+        }
+        
+        .carousel-arrow.next {
+            right: 0;
+        }
+        
+        .carousel-arrow:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
         }
         
         .pull-quote {
@@ -218,6 +270,16 @@
                 font-size: 1.2rem;
                 padding: 1.5rem;
             }
+            
+            .poem-carousel {
+                padding: 2rem 3rem;
+            }
+            
+            .carousel-arrow {
+                width: 38px;
+                height: 38px;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -241,30 +303,7 @@
 
     <div class="writings-container">
         
-        <!-- Writing Piece 1: Creative/Poem -->
-        <article class="writing-card">
-            <span class="writing-category">Creative</span>
-            <h2>All Of Me</h2>
-            <p class="writing-subtitle">A reflection on self-discovery</p>
-            
-            <div class="poem-content">
-                <div class="poem-stanza">
-                    <span class="poem-line">I see you, Strength, when life is hard and difficult to surmount,</span>
-                    <span class="poem-line">I do feel you, Love, drowning in uncharted waters, no matter the amount,</span>
-                    <span class="poem-line">I'm challenged by you, Anger, and your unwelcome entry into my soul,</span>
-                    <span class="poem-line">I want to know you, Calm, I believe it may be you who can make me feel more whole.</span>
-                </div>
-                
-                <div class="poem-stanza">
-                    <span class="poem-line">I wish I lived in your house, Forgiveness, the things you could teach,</span>
-                    <span class="poem-line">I've never needed you, Pride, your tight grip makes me hard to reach,</span>
-                    <span class="poem-line">I am all of these mangled pieces orchestrated into one,</span>
-                    <span class="poem-line">Do they recognize me in all their madness? By me are they equally undone?</span>
-                </div>
-            </div>
-        </article>
-
-        <!-- Writing Piece 2: Strategic Problem-Solving -->
+        <!-- Writing Piece 1: Strategic Problem-Solving -->
         <article class="writing-card">
             <span class="writing-category">Leadership</span>
             <h2>When Perfect Wasn't an Option</h2>
@@ -293,24 +332,61 @@
             </div>
         </article>
 
-        <!-- Writing Piece 3: Bridging Two Worlds -->
+        <!-- Writing Piece 2: Bridging Two Worlds -->
         <article class="writing-card">
             <span class="writing-category">Reflection</span>
-            <h2>[Title: The Bridge You Built]</h2>
+            <h2>Two Truths at Once</h2>
             <p class="writing-subtitle">Translating between strategy and execution</p>
             
             <div class="writing-content">
-                <p>[Opening - introduce the two "worlds" that needed bridging. Who were the stakeholders? What was at stake?]</p>
+                <p>The CFO was worried the university was about to default on its debt coverage ratio. I was tasked with building a five-year financial forecasting model that would give the Board a clear picture of where things stood—and more importantly, what needed to change.</p>
                 
-                <p>[The challenge - why was this difficult? What made these worlds feel incompatible or in tension?]</p>
+                <p>I spent weeks meeting with department heads and P&L owners across the institution, digging into their activity drivers and building their assumptions into the model. It wasn't simple. Most of these leaders were used to thinking one year out for annual budgeting, not five. But eventually, we got there. The model produced a comprehensive financial forecast with input from every key stakeholder across the university.</p>
                 
-                <p>[Your approach - how did you create understanding on both sides? What did you learn about translation, empathy, or communication?]</p>
+                <p>Before presenting to the Board, the CFO asked us to run the numbers by the Treasurer—a seasoned veteran who knew the institution's cash position better than anyone. When he reviewed the forecast, he didn't like what he saw. Not because it was wrong, but because it showed too much cushion. The department heads' projections suggested a longer runway than he believed actually existed. He had information they didn't: upcoming bond payment schedules, large capital outlays on the horizon, cash balance realities that painted a grimmer picture.</p>
+                
+                <p>We had a choice to make. We could stick with the forecast built on stakeholder input, or we could let the Treasurer's concerns override the work we'd done. Neither felt right.</p>
+                
+                <p>Instead, we created space for both perspectives. We embedded the Treasurer's assumptions into the model's worst-case scenario and gave it its own section in the Board presentation—clearly labeled and separate from the base forecast. When we presented, we explained that we didn't think the worst case was the most likely outcome, but it was a genuine possibility if more aggressive cost-cutting measures weren't implemented soon.</p>
                 
                 <div class="pull-quote">
-                    "[Another memorable insight or lesson from this experience]"
+                    "Advisory work isn't about choosing which stakeholder to believe—it's about creating frameworks that can hold multiple perspectives without collapsing into confusion."
                 </div>
                 
-                <p>[The resolution and reflection - what happened? What did this teach you about being a connector? How does this inform how you approach similar situations now?]</p>
+                <p>The Board needed to see both. The department forecast showed what was possible if operations continued as planned. The Treasurer's scenario showed what could happen if cash realities caught up faster than expected. Two truths at once.</p>
+                
+                <p>The political reality? The CFO left not long after, and the organization kicked the can down the road. But the worst-case scenario we presented wasn't theoretical—it was a warning based on real data. Without that dual framing, the Board would have kept delaying hard decisions until they genuinely faced a debt default.</p>
+                
+                <p>What I learned: advisory work isn't about choosing which stakeholder to believe. It's about creating frameworks that can hold multiple perspectives without collapsing into confusion. Two things can be true at the same time, as long as you clearly communicate the drivers behind each scenario. The best analysis doesn't pick sides—it gives decision-makers the full picture and trusts them to act on it, even when the politics make that hard.</p>
+            </div>
+        </article>
+
+        <!-- Writing Piece 3: Creative/Poem -->
+        <article class="writing-card">
+            <span class="writing-category">Creative</span>
+            <h2>All Of Me</h2>
+            <p class="writing-subtitle">A reflection on self-discovery</p>
+            
+            <div class="poem-carousel">
+                <button class="carousel-arrow prev" id="prevBtn">‹</button>
+                
+                <div class="poem-content">
+                    <div class="poem-stanza active">
+                        <span class="poem-line">I see you, Strength, when life is hard and difficult to surmount,</span>
+                        <span class="poem-line">I do feel you, Love, drowning in uncharted waters, no matter the amount,</span>
+                        <span class="poem-line">I'm challenged by you, Anger, and your unwelcome entry into my soul,</span>
+                        <span class="poem-line">I want to know you, Calm, I believe it may be you who can make me feel more whole.</span>
+                    </div>
+                    
+                    <div class="poem-stanza">
+                        <span class="poem-line">I wish I lived in your house, Forgiveness, the things you could teach,</span>
+                        <span class="poem-line">I've never needed you, Pride, your tight grip makes me hard to reach,</span>
+                        <span class="poem-line">I am all of these mangled pieces orchestrated into one,</span>
+                        <span class="poem-line">Do they recognize me in all their madness? By me are they equally undone?</span>
+                    </div>
+                </div>
+                
+                <button class="carousel-arrow next" id="nextBtn">›</button>
             </div>
         </article>
 
@@ -319,5 +395,74 @@
     <footer>
         <p>&copy; 2026 Vanessa Maerefat. Based in Houston, TX — open to relocate.</p>
     </footer>
+
+    <script>
+        // Poem carousel functionality
+        let currentStanza = 0;
+        const stanzas = document.querySelectorAll('.poem-stanza');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const carousel = document.querySelector('.poem-carousel');
+        
+        function updateCarousel() {
+            stanzas.forEach((stanza, index) => {
+                stanza.classList.remove('active');
+                if (index === currentStanza) {
+                    stanza.classList.add('active');
+                }
+            });
+            
+            // Update button states
+            prevBtn.disabled = currentStanza === 0;
+            nextBtn.disabled = currentStanza === stanzas.length - 1;
+        }
+        
+        prevBtn.addEventListener('click', () => {
+            if (currentStanza > 0) {
+                currentStanza--;
+                updateCarousel();
+            }
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            if (currentStanza < stanzas.length - 1) {
+                currentStanza++;
+                updateCarousel();
+            }
+        });
+        
+        // Touch/swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        carousel.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+        
+        carousel.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+        
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+                // Swipe left - next stanza
+                if (currentStanza < stanzas.length - 1) {
+                    currentStanza++;
+                    updateCarousel();
+                }
+            }
+            if (touchEndX > touchStartX + 50) {
+                // Swipe right - previous stanza
+                if (currentStanza > 0) {
+                    currentStanza--;
+                    updateCarousel();
+                }
+            }
+        }
+        
+        // Initialize
+        updateCarousel();
+    </script>
 </body>
 </html>
