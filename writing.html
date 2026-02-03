@@ -161,75 +161,114 @@
             margin-bottom: 0;
         }
         
-        /* Poem Carousel Styles */
+        /* Poem Journal Carousel Styles */
         .poem-carousel {
             position: relative;
             max-width: 700px;
             margin: 0 auto;
-            padding: 2rem 4rem;
+            padding: 3rem 2rem;
+        }
+        
+        .journal-page {
+            background: linear-gradient(to right, 
+                #8b7355 0%, 
+                #8b7355 8px, 
+                #f5f1e8 8px, 
+                #f5f1e8 100%);
+            border-radius: 4px;
+            box-shadow: 
+                0 2px 8px rgba(0, 0, 0, 0.1),
+                inset -1px 0 2px rgba(0, 0, 0, 0.05);
+            padding: 3rem 3rem 2rem 4rem;
+            min-height: 320px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .journal-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(
+                    transparent,
+                    transparent 31px,
+                    rgba(139, 115, 85, 0.08) 31px,
+                    rgba(139, 115, 85, 0.08) 32px
+                );
+            pointer-events: none;
+        }
+        
+        .journal-page::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.03"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" /></filter><rect width="100" height="100" filter="url(%23noise)" /></svg>');
+            pointer-events: none;
         }
         
         .poem-content {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2rem;
-            line-height: 2;
+            font-size: 1.8rem;
+            line-height: 2.2;
             text-align: center;
             color: #3a4540;
-            min-height: 280px;
+            min-height: 240px;
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            z-index: 1;
         }
         
-        .poem-stanza {
+        .poem-line {
             display: none;
             opacity: 0;
-            transition: opacity 0.5s ease-in-out;
+            transition: opacity 0.4s ease-in-out;
+            max-width: 90%;
+            margin: 0 auto;
         }
         
-        .poem-stanza.active {
+        .poem-line.active {
             display: block;
             opacity: 1;
         }
         
-        .poem-line {
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-        
-        .carousel-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(85, 107, 86, 0.1);
-            border: none;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            cursor: pointer;
+        .carousel-dots {
             display: flex;
-            align-items: center;
             justify-content: center;
-            transition: background 0.3s ease;
-            color: #556b56;
-            font-size: 1.2rem;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            position: relative;
+            z-index: 1;
         }
         
-        .carousel-arrow:hover {
-            background: rgba(85, 107, 86, 0.2);
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(85, 107, 86, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            padding: 0;
         }
         
-        .carousel-arrow.prev {
-            left: 0;
+        .dot:hover {
+            background: rgba(85, 107, 86, 0.5);
+            transform: scale(1.2);
         }
         
-        .carousel-arrow.next {
-            right: 0;
-        }
-        
-        .carousel-arrow:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
+        .dot.active {
+            background: #556b56;
+            width: 24px;
+            border-radius: 4px;
         }
         
         .pull-quote {
@@ -272,13 +311,18 @@
             }
             
             .poem-carousel {
-                padding: 2rem 3rem;
+                padding: 2rem 1rem;
             }
             
-            .carousel-arrow {
-                width: 38px;
-                height: 38px;
-                font-size: 1rem;
+            .journal-page {
+                padding: 2.5rem 2rem 1.5rem 3rem;
+                min-height: 280px;
+            }
+            
+            .poem-content {
+                font-size: 1.4rem;
+                line-height: 1.9;
+                min-height: 200px;
             }
         }
     </style>
@@ -368,17 +412,12 @@
             <p class="writing-subtitle">A reflection on self-discovery</p>
             
             <div class="poem-carousel">
-                <button class="carousel-arrow prev" id="prevBtn">‹</button>
-                
-                <div class="poem-content">
-                    <div class="poem-stanza active">
-                        <span class="poem-line">I see you, Strength, when life is hard and difficult to surmount,</span>
+                <div class="journal-page">
+                    <div class="poem-content">
+                        <span class="poem-line active">I see you, Strength, when life is hard and difficult to surmount,</span>
                         <span class="poem-line">I do feel you, Love, drowning in uncharted waters, no matter the amount,</span>
                         <span class="poem-line">I'm challenged by you, Anger, and your unwelcome entry into my soul,</span>
                         <span class="poem-line">I want to know you, Calm, I believe it may be you who can make me feel more whole.</span>
-                    </div>
-                    
-                    <div class="poem-stanza">
                         <span class="poem-line">I wish I lived in your house, Forgiveness, the things you could teach,</span>
                         <span class="poem-line">I've never needed you, Pride, your tight grip makes me hard to reach,</span>
                         <span class="poem-line">I am all of these mangled pieces orchestrated into one,</span>
@@ -386,7 +425,7 @@
                     </div>
                 </div>
                 
-                <button class="carousel-arrow next" id="nextBtn">›</button>
+                <div class="carousel-dots" id="carouselDots"></div>
             </div>
         </article>
 
@@ -398,38 +437,56 @@
 
     <script>
         // Poem carousel functionality
-        let currentStanza = 0;
-        const stanzas = document.querySelectorAll('.poem-stanza');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
+        let currentLine = 0;
+        const lines = document.querySelectorAll('.poem-line');
+        const dotsContainer = document.getElementById('carouselDots');
         const carousel = document.querySelector('.poem-carousel');
         
+        // Create dots
+        lines.forEach((_, index) => {
+            const dot = document.createElement('button');
+            dot.className = 'dot';
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToLine(index));
+            dotsContainer.appendChild(dot);
+        });
+        
+        const dots = document.querySelectorAll('.dot');
+        
         function updateCarousel() {
-            stanzas.forEach((stanza, index) => {
-                stanza.classList.remove('active');
-                if (index === currentStanza) {
-                    stanza.classList.add('active');
+            lines.forEach((line, index) => {
+                line.classList.remove('active');
+                if (index === currentLine) {
+                    line.classList.add('active');
                 }
             });
             
-            // Update button states
-            prevBtn.disabled = currentStanza === 0;
-            nextBtn.disabled = currentStanza === stanzas.length - 1;
+            dots.forEach((dot, index) => {
+                dot.classList.remove('active');
+                if (index === currentLine) {
+                    dot.classList.add('active');
+                }
+            });
         }
         
-        prevBtn.addEventListener('click', () => {
-            if (currentStanza > 0) {
-                currentStanza--;
-                updateCarousel();
-            }
-        });
+        function goToLine(index) {
+            currentLine = index;
+            updateCarousel();
+        }
         
-        nextBtn.addEventListener('click', () => {
-            if (currentStanza < stanzas.length - 1) {
-                currentStanza++;
+        function nextLine() {
+            if (currentLine < lines.length - 1) {
+                currentLine++;
                 updateCarousel();
             }
-        });
+        }
+        
+        function prevLine() {
+            if (currentLine > 0) {
+                currentLine--;
+                updateCarousel();
+            }
+        }
         
         // Touch/swipe support for mobile
         let touchStartX = 0;
@@ -446,20 +503,28 @@
         
         function handleSwipe() {
             if (touchEndX < touchStartX - 50) {
-                // Swipe left - next stanza
-                if (currentStanza < stanzas.length - 1) {
-                    currentStanza++;
-                    updateCarousel();
-                }
+                nextLine();
             }
             if (touchEndX > touchStartX + 50) {
-                // Swipe right - previous stanza
-                if (currentStanza > 0) {
-                    currentStanza--;
-                    updateCarousel();
-                }
+                prevLine();
             }
         }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') {
+                nextLine();
+            } else if (e.key === 'ArrowLeft') {
+                prevLine();
+            }
+        });
+        
+        // Click on journal page to advance
+        document.querySelector('.journal-page').addEventListener('click', (e) => {
+            if (!e.target.classList.contains('dot')) {
+                nextLine();
+            }
+        });
         
         // Initialize
         updateCarousel();
